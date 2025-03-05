@@ -1,0 +1,48 @@
+{% extends "book_site/base.html" %}
+
+{% block content %}
+    <div class="profileNavContent">
+
+        <nav class="profileNav">
+            <a href="{% url 'profile_redirect' %}" class="profileLink">My Reservations</a>
+            <a href="{% url 'profile_reviews_view' %}" class="profileLink">My Reviews</a>
+
+            <a href="{% url 'profile_settings_view' %}" class="profileLink">Settings</a>
+        </nav>
+
+        <div class="containerProfile">
+            <div class="header_Details">
+                <h2>Welcome, {{ user.username }}!</h2>
+                <h3 class="author_Det">Your Profile Details</h3>
+            </div>
+            <div class="profileInfo">
+                <div class="infocolumn">
+                    <p>First Name: {{ user.first_name }}</p>
+                    <p>Last Name: {{ user.last_name }}</p>
+                    <p>Email: {{ user.email }}</p>
+                </div>
+                <div class="infocolumn">
+                    {% if profile %}
+                        <p>Phone Number: {{ profile.phone_number }}</p>
+                        <p>Country: {{ profile.country }}</p>
+                        <p>City: {{ profile.city }}</p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        <form method="POST" action="{% url 'profile_settings_view' %}" onsubmit="return confirmDeactivation();">
+            {% csrf_token %}
+            <button type="submit" name="delete_account" class="btn-btn-danger">Delete Account</button>
+        </form>
+    </div>
+
+
+    <script>
+        function confirmDeactivation() {
+            return confirm("Are you certain you want to delete your account?");
+        }
+    </script>
+    </div>
+
+{% endblock %}
+

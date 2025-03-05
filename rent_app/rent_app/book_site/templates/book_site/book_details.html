@@ -1,0 +1,100 @@
+{% extends "book_site/base.html" %}
+
+{% block content %}
+    <div class="GoBackDIV"><a href="{% url 'catalogue' %}" class="btn-btn-info">go back</a></div>
+    <div class="header_Details">
+        <h2>{{ book.title }}</h2>
+        <p class="author_Det">{{ book.author }}</p>
+    </div>
+    <div class="book_Details">
+        <p><strong>Published Date:</strong> {{ book.pub_date }}</p>
+        <p><strong>Added to the Catalogue:</strong> {{ book.date_added }}</p>
+        <p><strong>Is available?:</strong> {{ book.available }}</p>
+    </div>
+    <h3>Reviews:</h3>
+    {% if reviews %}
+        <ul class="Reviews">
+            {% for review in reviews %}
+                <li>
+                    <div class="reviewHeader">
+                        <p class="username">{{ review.user.username }}</p>
+
+                        <p class="stars">
+                            {% if review.stars == 5 %}
+                                ★★★★★
+                            {% elif review.stars == 4 %}
+                                ★★★★☆
+                            {% elif review.stars == 3 %}
+                                ★★★☆☆
+                            {% elif review.stars == 2 %}
+                                ★★☆☆☆
+                            {% elif review.stars == 1 %}
+                                ★☆☆☆☆
+                            {% else %}
+                                No rating
+                            {% endif %}
+                        </p>
+                    </div>
+                    <p class="text">{{ review.review_text }}</p>
+                    {% if user.is_authenticated and review.user == user %}
+                        <div class="editButtonsDIV">
+                            <form method="get" action="{% url 'book_details' book.id %}">
+                                {% csrf_token %}
+                                <input type="hidden" name="review_id" value="{{ review.id }}">
+                                <button type="submit" class="ReviewButtons">Edit</button>
+                            </form>
+                            <form method="post" action="{% url 'book_details' book.id %}"
+                                  onsubmit="return confirm('Are you sure you want to delete this review?');">
+                                {% csrf_token %}
+                                <input type="hidden" name="review_id" value="{{ review.id }}">
+                                <button type="submit" name="delete_review" class="ReviewButtons">Delete</button>
+                            </form>
+                        </div>
+                    {% endif %}
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p class="noReviews">No reviews yet.</p>
+    {% endif %}
+
+    {% if user.is_authenticated %}
+        {#        <h3>Write a Review:</h3>#}
+        <h4>{% if review_to_edit %}Edit{% else %}Write{% endif %} a Review:</h4>
+        <form method="post" class="ReviewForm">
+            {% csrf_token %}
+            {% if form.non_field_errors %}
+                <div class="errorlist">
+                    {% for error in form.non_field_errors %}
+                        <p class="errorReset">{{ error }}</p>
+                    {% endfor %}
+                </div>
+            {% endif %}
+            <div class="ReviewFormDiv">
+
+                <div class="ReviewFormTextDiv">
+                    <label for="id_stars">Rating:</label>
+                    {{ form.stars }}
+                </div>
+
+                <div class="ReviewFormTextDiv">
+                    <label for="review_text">Review:</label> {{ form.review_text }}
+                </div>
+                {% if review_to_edit %}
+                    <input type="hidden" name="review_id" value="{{ review_to_edit.id }}">
+                {% endif %}
+            </div>
+            <button type="submit">{% if review_to_edit %}Update{% else %}Submit{% endif %} Review</button>
+        </form>
+    {% else %}
+        <div>
+            <p class="noReviews">You must be logged in to write a review.</p>
+            <div class="NotLoggedReviewDIV">
+                <a href="{% url 'login_redirect' %}" class="btn-btn-info">Log in here</a>
+            </div>
+        </div>
+    {% endif %}
+
+{% endblock %}
+
+

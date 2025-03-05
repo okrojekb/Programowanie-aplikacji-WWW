@@ -1,0 +1,21 @@
+{% extends "book_site/base.html" %}
+
+{% block content %}
+    {% if user.is_authenticated %}
+
+        <div class="popup">
+            <h2>{{ message }}</h2>
+            <a href="{% url 'catalogue' %}">OK</a>
+        </div>
+    {% else %}
+
+        <div class="popup">
+            <h2>You must be logged in to reserve a book.</h2>
+            <p>Please <a href="{% url 'login_redirect' %}">login</a> or <a href="{% url 'register' %}">register</a> to
+                continue.
+            </p>
+        </div>
+    {% endif %}
+
+{% endblock %}
+

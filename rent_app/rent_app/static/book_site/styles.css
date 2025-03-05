@@ -1,0 +1,903 @@
+:root {
+    --colorhfbg: #ea3974;
+    --colorbg: #EAF2EF;
+    --colortext: #190E4F;
+    --colornavbg: #190E4F;
+    --colornavbox: #F3A712;
+}
+
+html {
+    height: 100%;
+}
+
+body {
+    background-color: var(--colorbg);
+    color: var(--colortext);
+    font-family: 'Grenze Gotisch', sans-serif;
+    position: relative;
+    margin: 0;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    font-size: 2.3vh;
+}
+
+main {
+    flex: 1;
+    align-items: center;
+    justify-content: center;
+}
+
+header {
+    margin: 0;
+    background-color: var(--colorhfbg);
+    color: var(--colornavbg);
+    height: 7em;
+}
+
+footer {
+    position: relative;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    height: 7em;
+    padding: 1em;
+    background-color: var(--colorhfbg);
+    color: var(--colornavbg);
+}
+
+.contact {
+    margin: 0.1em 0.1em 0.1em 1em;
+}
+
+h1 {
+    padding: 0.5em;
+    justify-content: center;
+    text-align: center;
+    margin: 0;
+    font-size: 3em;
+}
+
+.profileNavContent {
+    display: flex;
+    width: 100%;
+    height: 100%;
+}
+
+.profileNav {
+    background-color: #29335C;
+    justify-content: flex-start;
+    display: flex;
+    flex-direction: column;
+    width: 15%;
+    min-width: 16ch;
+    height: 100%;
+    align-items: center;
+    padding: 0 0.5em;
+}
+
+.profileLink {
+    text-decoration: none;
+    background-color: var(--colorhfbg);
+    width: 90%;
+    text-align: center;
+    font-size: 1.3em;
+    color: var(--colortext);
+    margin: 0.5em;
+    border-radius: 1em;
+}
+
+.containerProfile {
+    display: flex;
+    padding: 1em;
+    width: 80%;
+    justify-content: start;
+    align-items: center;
+    flex-direction: column
+}
+
+.infocolumn {
+    justify-items: center;
+}
+
+nav {
+    background-color: var(--colornavbg);
+    justify-content: center;
+    height: 5em;
+    padding: 0 1em;
+}
+
+.sectionLinksDiv {
+    background-color: var(--colornavbg);
+    justify-content: center;
+    height: 3em;
+    display: flex;
+    padding: 0 1em;
+}
+
+.sectionLink {
+    text-decoration: none;
+    background-color: var(--colornavbox);
+    width: 20%;
+    text-align: center;
+    margin: 0.4em 1em;
+    font-size: 1.3em;
+    color: var(--colortext);
+    border-radius: 1em;
+    min-width: 9ch;
+}
+
+.LoginLinkDiv {
+    background-color: var(--colornavbg);
+    justify-content: right;
+    height: 2em;
+    display: flex;
+    padding: 0 1em;
+    min-width: 30ch;
+}
+
+
+.logout-button {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 1em;
+    color: var(--colortext);
+    font-family: 'Grenze Gotisch', sans-serif;
+    margin: 0;
+    min-width: 6ch;
+    height: 1em;
+}
+
+.login-info {
+    color: var(--colorhfbg);
+    font-size: 1.3em;
+    text-decoration: none;
+    width: 20%;
+    text-align: right;
+    margin: 0 1em;
+    min-width: 20ch;
+}
+
+.LogInButton {
+    text-decoration: none;
+    background-color: var(--colornavbox);
+    width: 10%;
+    text-align: center;
+    margin-top: 0.2em;
+    font-size: 1.3em;
+    color: var(--colortext);
+    border-radius: 1em;
+    min-width: 8ch;
+}
+
+button {
+    background-color: rgba(234, 57, 116, 0.83);
+    color: var(--colortext);
+    height: 2em;
+    font-size: 1.3em;
+    min-width: 12ch;
+    border-radius: 1em;
+    margin: 0.5em;
+    font-family: 'Grenze Gotisch', sans-serif;
+}
+
+.btn-btn-danger {
+    height: 3em;
+    min-width: 8ch;
+    font-size: 1em;
+}
+
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.hidden {
+    display: none;
+}
+
+.left, .right {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 20px;
+    border: none;
+    background: transparent;
+    color: var(--colortext);
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+.field-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 20px 20px;
+    gap: 0.5em;
+}
+
+.field-wrap div {
+    height: 2.5em;
+    align-self: center;
+}
+
+.field-wrap div div {
+    align-items: center;
+    height: 2em;
+    width: 100%;
+    font-size: 1.1em;
+    min-width: 15ch;
+}
+
+.field-wrap div div input {
+    height: 2em;
+    font-size: 1em;
+    font-family: 'Grenze Gotisch', sans-serif;
+    border-radius: 1em;
+    color: var(--colortext);
+    padding: 0 0.5em;
+}
+
+.errorlist.nonfield {
+    font-size: 1em;
+    height: 3em;
+}
+
+.errorlist.nonfield li {
+    font-size: 1em;
+    height: 2em;
+}
+
+.error {
+    margin-bottom: 0.5em;
+}
+
+.top-section {
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 100%;
+    max-width: 800px;
+}
+
+h2 {
+    font-size: 1.8em;
+    justify-content: center;
+    width: 100%;
+    text-align: center;
+}
+
+.home-p {
+    margin: 1em 3em;
+}
+
+.home-list {
+    height: auto;
+    list-style: disc;
+    justify-items: left;
+    margin: 1em 3em;
+}
+
+.home-list-number {
+    height: auto;
+    justify-items: left;
+    margin: 1em 3em;
+    padding-inline-start: 0;
+}
+
+.home-list li {
+    height: auto;
+    font-size: 1em;
+}
+
+ul {
+    height: 3.5em;
+    list-style-type: none;
+    justify-items: center;
+    padding-inline-start: 0;
+    margin: -1em;
+}
+
+ul li {
+    height: 0.8em;
+    font-size: 0.8em;
+    align-items: center;
+    justify-content: center;
+}
+
+.Reviews {
+    height: revert;
+    margin-bottom: 2em;
+    margin-top: 1em;
+}
+
+.Reviews li {
+    height: auto;
+    font-size: 1.1em;
+    justify-items: center;
+    text-align: center;
+    margin-top: 0.4em;
+    background-color: #ff84a5;
+    border-radius: 1em;
+    padding: 0.5em 2em;
+    width: 50%;
+    margin-bottom: 2em;
+}
+
+.reviewHeader {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+}
+
+.username, .stars {
+    font-weight: bold;
+    margin-bottom: 0.4em;
+    margin-top: 0.4em;
+    font-size: 1.2em;
+}
+
+.username {
+    flex: 1;
+    text-align: left;
+}
+
+.stars {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+}
+
+.text {
+    font-style: italic;
+    margin-bottom: 0.7em;
+    margin-top: 0.7em;
+}
+
+.registerForm {
+    justify-items: center;
+}
+
+.registerForm ul {
+    justify-items: center;
+    justify-content: center;
+}
+
+.registerForm p {
+    justify-items: center;
+}
+
+.registerForm p input {
+    height: 2em;
+    border-radius: 1em;
+    font-size: 1em;
+    font-family: 'Grenze Gotisch', sans-serif;
+    color: var(--colortext);
+    padding: 0 0.5em;
+}
+
+.helptext {
+    display: block;
+    height: 0.8em;
+    font-size: 0.8em;
+    background-color: #ff84a552;
+    border-radius: 1em;
+}
+
+#catalogue-form {
+    border: none;
+    background-color: transparent;
+    align-items: center;
+    justify-self: center;
+    height: 4em;
+    align-self: center;
+    display: flex;
+}
+
+.Catalogue-search {
+    height: 2.35em;
+    margin: 0.2em;
+    font-family: 'Grenze Gotisch', sans-serif;
+    font-size: 1.1em;
+    border-radius: 1em;
+    padding: 0 0 0 1em;
+    min-width: 10ch;
+}
+
+.Catalogue-search option {
+    border-radius: 1em;
+    font-size: 0.85em;
+    padding: 0.2em 0.5em;
+}
+
+.Catalogue-search-label {
+    font-size: 1.3em;
+    margin: 0.2em;
+}
+
+.section {
+    width: 80%;
+    max-width: 80ch;
+}
+
+.errorlist {
+    background-color: #ff064c9c;
+    color: var(--colortext);
+    font-weight: bold;
+    list-style-type: none;
+    padding: 0 0.5em 0.5em 0.5em;
+    border-radius: 1em;
+    width: 60ch;
+    justify-content: center;
+    height: 2em;
+    margin: 0.2em;
+    align-content: center;
+}
+
+.errorReset {
+    align-self: center;
+    justify-self: center;
+    text-align: center;
+    margin: 0;
+    margin-top: 0.5em;
+}
+
+.popup {
+    width: 50%;
+    justify-self: center;
+    align-self: center;
+}
+
+.header_Details {
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 100%;
+    justify-items: center;
+}
+
+.author_Det {
+    font-size: 1.4em;
+    margin: -1.1em 0 0;
+    font-style: italic;
+    width: 100%;
+    text-align: center;
+    font-weight: bold;
+}
+
+.editButtonsDIV {
+    display: flex;
+    gap: 2em;
+}
+
+.ReviewButtons {
+    height: 1.5em;
+    font-size: 1.3em;
+    min-width: 8ch;
+    margin: 0.2em;
+}
+
+.noReviews {
+    width: 100%;
+    text-align: center;
+}
+
+.NotLoggedReviewDIV {
+    background-color: rgba(234, 57, 116, 0.83);
+    color: var(--colortext);
+    height: 1.5em;
+    font-size: 1.3em;
+    width: 10ch;
+    border-radius: 1em;
+    margin: 0 0 0.5em;
+    font-family: 'Grenze Gotisch', sans-serif;
+    text-decoration: none;
+    justify-self: center;
+    align-content: center;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.GoBackDIV {
+    background-color: rgba(234, 57, 116, 0.83);
+    color: var(--colortext);
+    height: 1.5em;
+    font-size: 1.3em;
+    width: 8ch;
+    border-radius: 1em;
+    margin: 0.5em 0 0 0.5em;
+    font-family: 'Grenze Gotisch', sans-serif;
+    text-decoration: none;
+    align-content: center;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.ReviewForm {
+    align-content: center;
+    justify-items: center;
+}
+
+h3 {
+    font-size: 1.6em;
+    width: 100%;
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 0.5em;
+}
+
+h4 {
+    font-size: 1.3em;
+    width: 100%;
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 0.5em;
+    margin-top: 0.7em;
+}
+
+.book_Details {
+    justify-items: center;
+}
+
+
+.LinkButtonCat {
+    color: var(--colortext);
+    text-decoration: none;
+}
+
+
+.LinkButtonCatDIV {
+    background-color: rgba(236, 97, 139, 0.83);
+    color: var(--colortext);
+    height: 2em;
+    font-size: 1.3em;
+    width: 12ch;
+    border-radius: 1em;
+    margin: 0;
+    font-family: 'Grenze Gotisch', sans-serif;
+    text-decoration: none;
+    justify-self: center;
+    align-content: center;
+}
+
+.reserveButton {
+    margin: 0;
+    font-size: 1.1em;
+    height: 2.35em;
+}
+
+.reserveButton_not, .reserveButton_notAv {
+    margin: 0;
+    background-color: rgba(236, 97, 139, 0.83);
+    border: 0;
+    height: 2.35em;
+    font-size: 1.1em;
+}
+
+.btn-btn-info {
+    color: var(--colortext);
+    text-decoration: none;
+    font-size: 0.85em;
+    display: inline-block;;
+}
+
+.DetailsButtonCatDIV {
+    background-color: rgba(234, 57, 116, 0.83);
+    color: var(--colortext);
+    height: 2em;
+    font-size: 1.3em;
+    width: 12ch;
+    border-radius: 1em;
+    margin: 0;
+    font-family: 'Grenze Gotisch', sans-serif;
+    text-decoration: none;
+    justify-self: center;
+    align-content: center;
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.step-links {
+    display: flex;
+    flex-direction: column;
+}
+
+.popup p {
+    text-align: center;
+}
+
+.ForgotPasswdDIV {
+    background-color: rgba(234, 57, 116, 0.83);
+    color: var(--colortext);
+    height: 2.5em;
+    font-size: 1em;
+    min-width: 12ch;
+    width: 20%;
+    border-radius: 1em;
+    font-family: 'Grenze Gotisch', sans-serif;
+    text-decoration: none;
+    align-content: center;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 0.1em
+}
+
+.CreateAccountDIV {
+    background-color: rgba(234, 57, 116, 0.83);
+    color: var(--colortext);
+    height: 3em;
+    font-size: 1.3em;
+    min-width: 12ch;
+    width: 20%;
+    border-radius: 1em;
+    font-family: 'Grenze Gotisch', sans-serif;
+    text-decoration: none;
+    align-content: center;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 0.1em
+}
+
+.createAccountLink {
+    color: var(--colortext);
+    text-decoration: none;
+    font-size: 1em;
+    display: inline-block;;
+}
+
+.logInMargin {
+    margin: 0 0 0.7em;
+}
+
+
+.pagination-link {
+    color: var(--colortext);
+    text-decoration: none;
+    padding: 8px 12px;
+    transition: background-color 0.3s, color 0.3s
+}
+
+.LinksCatalogue {
+    background-color: rgba(234, 57, 116, 0.83);
+    color: var(--colortext);
+    height: 2em;
+    font-size: 1.1em;
+    width: 8ch;
+    border-radius: 1em;
+    font-family: 'Grenze Gotisch', sans-serif;
+    text-decoration: none;
+    justify-self: center;
+    align-content: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 5px;
+}
+
+.pagination-link:hover {
+    background-color: #333;
+    color: #fff;
+}
+
+.paginationLinks {
+    display: flex;
+    flex-direction: row;
+}
+
+.current {
+    align-self: center;
+    font-size: 1.1em;
+}
+
+table {
+    width: 100%;
+    max-width: 800px;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+table, th, td {
+    border: 0.1em solid var(--colornavbg);
+}
+
+th, td {
+    padding: 5px;
+}
+
+th {
+    background-color: var(--colorhfbg);
+    text-align: center;
+    font-size: 1.4em;
+}
+
+td {
+    background-color: #ddd;
+    text-align: center;
+}
+
+.LoginForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.profileInfo {
+    display: flex;
+    flex-direction: row;
+    gap: 2em;
+    margin-top: 1em;
+    justify-content: center;
+    width: 100%;
+}
+
+.ForgotPassword {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-items: center;
+}
+
+.forgerinfo, .forgerinfoB {
+    margin: 0;
+    font-size: 1.1em;
+}
+
+.forgerinfoB {
+    margin-bottom: 0.5em;
+}
+
+.ReviewFormTextDiv {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    gap: 0.3em;
+    flex-direction: column;
+    margin-bottom: 0.5em;
+    min-width: 10ch;
+    height: 100%;
+    align-self: center;
+}
+
+#id_review_text {
+    height: 11em;
+    font-size: 1em;
+    font-family: 'Grenze Gotisch', sans-serif;
+    padding: 0.5em;
+    border-radius: 1em;
+}
+
+.star-rating {
+    display: flex;
+    flex-direction: column;
+}
+
+.ReviewFormDiv {
+    display: flex;
+    flex-direction: row;
+    gap: 3em;
+}
+
+.star-rating input {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    cursor: pointer;
+}
+
+
+form .form-group {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 0.5em;
+    justify-content: center;
+}
+
+form .form-group label {
+    width: 20%;
+    padding: 0.5em;
+    text-align: center;
+}
+
+form .form-group input {
+    width: 60%;
+    padding: 0.5em;
+    font-size: 1em;
+    font-family: 'Grenze Gotisch', sans-serif;
+    border-radius: 1em;
+    color: var(--colortext);
+    height: 1em;
+    align-self: center;
+}
+
+form .form-group .helptext,
+form .form-group ul,
+form .form-group span {
+    width: 80%;
+    padding: 0.5em;
+    margin: 0;
+    clear: both;
+    display: block;
+    height: auto;
+    justify-items: center;
+    text-align: center;
+    margin-top: 0.5em;
+
+}
+
+form .form-group ul {
+    background-color: #ff84a552;
+    align-content: center;
+    align-self: center;
+    text-align: center;
+    border-radius: 1em;
+    justify-items: center;
+    margin: 0;
+    padding: 0;
+}
+
+
+form .form-group span ul {
+    background-color: transparent;
+    align-content: center;
+    align-self: center;
+    text-align: center;
+    border-radius: 1em;
+    justify-items: center;
+    padding-top: 0;
+    padding-bottom: 0.5em;
+}
+
+form .form-group span ul li {
+    font-size: 1em;
+    height: 0.9em;
+}
+
+
+.registerForm {
+    width: 100%;
+    max-width: 50em;
+    justify-items: legacy;
+    justify-self: center;
+}
+
+
+.registrationButton {
+    justify-self: center;
+    justify-content: center;
+    justify-items: center;
+    align-items: center;
+    /* align-self: center; */
+    /* align-content: center; */
+    /* text-align: center; */
+    display: flex;
+}
+
+
+
+
+

@@ -1,0 +1,45 @@
+{% extends "book_site/base.html" %}
+
+{% block content %}
+    <div class="container">
+        <div class="left">
+            <h3>New to Book To Go?</h3>
+            <div class="CreateAccountDIV">
+                <a href="{% url 'register' %}" class="createAccountLink">Create an account</a>
+            </div>
+        </div>
+
+        <div class="right">
+            <h3 class="logInMargin">Log in to your account</h3>
+
+            <form method="post" class="LoginForm" id="loginForm">
+                {% csrf_token %}
+                {% if form.non_field_errors %}
+                    <div class="error">
+                        {{ form.non_field_errors }}
+                    </div>
+                {% endif %}
+                <div class="field-wrap">
+                    {% for field in form %}
+                        <div>
+                            <div>
+                                {{ field.label_tag }}
+                                {{ field }}
+                                <div class="error-messageLogIn" id="error-{{ field.name }}"></div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+                <button type="submit">Log in</button>
+            </form>
+            <div class="ForgotPasswdDIV">
+                <a href="{% url 'password_reset1' %}" class="createAccountLink">Forgot your password?</a>
+            </div>
+            {% if field.errors %}
+                <div class="error">
+                    {{ field.errors }}
+                </div>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}

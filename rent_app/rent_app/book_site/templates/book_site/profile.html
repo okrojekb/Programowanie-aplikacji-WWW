@@ -1,0 +1,57 @@
+{% extends "book_site/base.html" %}
+
+{% block content %}
+    <div class="profileNavContent">
+        <nav class="profileNav">
+            <a href="{% url 'profile_redirect' %}" class="profileLink">My Reservations</a>
+            <a href="{% url 'profile_reviews_view' %}" class="profileLink">My Reviews</a>
+            <a href="{% url 'profile_settings_view' %}" class="profileLink">Settings</a>
+        </nav>
+        <div class="containerProfile">
+            <h2>Your Reservations</h2>
+
+            {% if reservations %}
+
+                <div class="ForgotPasswdDIV">
+                    <a href="{% url 'export_to_excelReservation' %}" class="createAccountLink">Export to Excel</a>
+                </div>
+
+                <table>
+                    <thead>
+                    <tr>
+                        <th>Book Title</th>
+                        <th>Pickup Date</th>
+                        <th>Status</th>
+                        <th>Cancel</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for reservation in reservations %}
+                        <tr>
+                            <td>{{ reservation.book.title }}</td>
+                            <td>{{ reservation.pickup_date }}</td>
+                            <td>
+                                {% if reservation.is_valid %}
+                                    <span style="color: green;">Valid</span>
+                                {% else %}
+                                    <span style="color: red;">Expired</span>
+                                {% endif %}
+                            </td>
+                            <td>
+                                <form action="{% url 'cancel_reservation' reservation.id %}" method="post"
+                                      onsubmit="return confirm('Are you sure you want to delete this reservation?');">
+                                    {% csrf_token %}
+                                    <button type="submit" class="btn-btn-danger">Cancel Reservation</button>
+                                </form>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            {% else %}
+                <p>You don't have any reservations.</p>
+            {% endif %}
+        </div>
+    </div>
+
+{% endblock %}

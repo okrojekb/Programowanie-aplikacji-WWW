@@ -1,0 +1,110 @@
+{% extends "book_site/base.html" %}
+
+{% block content %}
+    <div class="container">
+        <div class="top-section">
+            <h2 class="header-Catalogue">Search the Catalogue</h2>
+
+            <form method="GET" action="" id="catalogue-form">
+                <input type="text" class="Catalogue-search" id=search value="{{ request.GET.search }}" name="search"
+                       placeholder="Search...">
+                <label class="Catalogue-search-label" for="criteria">by</label>
+                <select id="criteria" class="Catalogue-search" name="criteria">
+                    <option value="title" {% if criteria == 'title' %}selected{% endif %}>Title</option>
+                    <option value="author" {% if criteria == 'author' %}selected{% endif %}>Author</option>
+                </select>
+                <button type="submit">Search</button>
+
+                <script type="text/javascript"> document.addEventListener('DOMContentLoaded', function () {
+                    const reserveButtons = document.querySelectorAll('.reserveButton_not');
+                    reserveButtons.forEach((button) => {
+                        button.removeEventListener('click', handleButtonClick);
+                        button.addEventListener('click', handleButtonClick);
+                    });
+
+                    function handleButtonClick(event) {
+                        const isLoggedIn = '{{ user.is_authenticated }}';
+                        if (isLoggedIn === 'False') {
+                            if (confirm('You have to be logged-in to reserve a book.\n' + 'Do you want to log in now?')) {
+                                document.location = "{% url 'login_redirect' %}";
+                            }
+                        } else {
+                            alert('Reservation successful!');
+                        }
+                    }
+                });
+                </script>
+
+            </form>
+        </div>
+        <table>
+            <thead>
+            <tr>
+                <th>Title</th>
+                <th>Author</th>
+                <th>Reserve</th>
+                <th>Details</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for book in page_obj %}
+                <tr>
+                    <td>{{ book.title }}</td>
+                    <td>{{ book.author }}</td>
+                    <td>
+                        {% if book.available %}
+                            {% if user.is_authenticated %}
+                                <form action="{% url 'reserve_book' book.id %}" method="post"
+                                      onsubmit="return confirm('Are you sure you want to reserve this book?');">
+                                    {% csrf_token %}
+                                    <button type="submit" class="reserveButton">Reserve</button>
+                                </form>
+                            {% else %}
+                                <button id="reserve-button" class="reserve-button reserveButton_not">Reserve</button>
+                            {% endif %}
+                        {% else %}
+                            <button disabled class="reserveButton_notAv">Not Available</button>
+                        {% endif %}
+                    <td>
+                        <div class="DetailsButtonCatDIV">
+                            <a href="{% url 'book_details' book.id %}" class="btn-btn-info">View Details</a>
+                        </div>
+                    </td>
+                </tr>
+            {% endfor %} </tbody>
+        </table>
+        <div class="pagination">
+            <span class="step-links">
+                <span class="current">
+                    Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+                </span>
+                {% if page_obj.has_previous %}
+                    <div class="paginationLinks">
+                        <div class="LinksCatalogue">
+                            <a href="?search={{ request.GET.search }}&criteria={{ request.GET.criteria }}&page=1"
+                               class="pagination-link">&laquo; first</a>
+                        </div>
+                        <div class="LinksCatalogue">
+                            <a href="?search={{ request.GET.search }}&criteria={{ request.GET.criteria }}&page={{ page_obj.previous_page_number }}"
+                               class="pagination-link">previous</a>
+                        </div>
+                    </div>
+                {% endif %}
+
+                {% if page_obj.has_next %}
+                    <div class="paginationLinks">
+                        <div class="LinksCatalogue">
+                            <a href="?search={{ request.GET.search }}&criteria={{ request.GET.criteria }}&page={{ page_obj.next_page_number }}"
+                               class="pagination-link">next</a>
+                        </div>
+                        <div class="LinksCatalogue">
+                            <a href="?search={{ request.GET.search }}&criteria={{ request.GET.criteria }}&page={{ page_obj.paginator.num_pages }}"
+                               class="pagination-link">last &raquo;</a>
+                        </div>
+                    </div>
+                {% endif %}
+            </span>
+        </div>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,20 @@
+<div class="LoginLinkDiv">
+    {% if user.is_authenticated %}
+        <div class="login-info">Hi {{ user.username }}!</div>
+        <form action="{% url 'logout' %}" method="post" class="LogInButton">
+            {% csrf_token %}
+            <button type="submit" class="logout-button">Log Out</button>
+        </form>
+    {% else %}
+        <div class="login-info">You are not logged in</div>
+        <a href="{% url 'login_redirect' %}" class="LogInButton">Log In</a>
+    {% endif %}
+</div>
+
+<div class="sectionLinksDiv">
+    <a href="{% url 'home_redirect' %}" class="sectionLink">Home</a>
+    <a href="{% url 'catalogue_redirect' %}" class="sectionLink">Catalogue</a>
+    <a href="{% url 'profile_redirect' %}" class="sectionLink">Profile</a>
+</div>
+
+

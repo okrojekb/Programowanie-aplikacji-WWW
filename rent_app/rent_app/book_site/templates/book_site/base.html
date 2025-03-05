@@ -1,0 +1,32 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="https://fonts.googleapis.com/css2?family=Grenze+Gotisch&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href={% static 'book_site/styles.css' %}>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+
+<header>
+    <h1>Book To Go</h1>
+</header>
+
+<nav>
+    {% include "book_site/navigation.html" %}
+</nav>
+
+<main>
+    {% block content %}Ta strona jest jeszcze pusta{% endblock %}
+</main>
+
+<footer>
+    Contact us:
+    <p class="contact">tel: 123 456 789</p>
+    <p class="contact">e-mail: booktogo@mail.com</p>
+    <p class="contact">address: 23 Long St, Small Town</p>
+</footer>
+</body>
+</html>

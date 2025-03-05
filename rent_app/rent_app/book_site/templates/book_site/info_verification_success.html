@@ -1,0 +1,11 @@
+{% extends "book_site/base.html" %}
+
+{% block content %}
+    <div class="popup">
+        <h2>Your account was activated</h2>
+        <p>You can log in now</p>
+        <div class="NotLoggedReviewDIV">
+            <a href="{% url 'login_redirect' %}" class="btn-btn-info">Log in</a>
+        </div>
+    </div>
+{% endblock %}
